@@ -1,5 +1,8 @@
 require("dotenv").config();
 
+var moment = require('moment');
+moment().format();
+
 var keys = require("./keys.js");
 
 // Example of accessing key information

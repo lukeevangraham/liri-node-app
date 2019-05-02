@@ -1,7 +1,7 @@
 {
   "name": "liri-node-app",
   "version": "1.0.0",
-  "description": "",
+  "description": "Language interpretation and recognition interface",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -11,13 +11,17 @@
     "url": "git+https://github.com/lukeevangraham/liri-node-app.git"
   },
   "keywords": [],
-  "author": "",
+  "author": "Luke Graham",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/lukeevangraham/liri-node-app/issues"
   },
   "homepage": "https://github.com/lukeevangraham/liri-node-app#readme",
   "dependencies": {
+    "axios": "^0.18.0",
+    "dotenv": "^7.0.0",
+    "moment": "^2.24.0",
     "node-spotify-api": "^1.1.1"
-  }
+  },
+  "devDependencies": {}
 }
