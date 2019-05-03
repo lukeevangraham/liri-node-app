@@ -21,10 +21,17 @@ if (userArguments[0] === "concert-this") {
     console.log(artist);
 
     axios
-        .get("https://rest.bandsintown.com/artists/" + artist + "/events?app_id=codingbootcamp")
-        .then(function (response) {
+        .get("http://www.bandsintown.com/event/?app_id=codingbootcamp&artist=" + artist + "&date=upcoming")
+        .then(function(response) {
+            // If the axios was successful...
+            // Then log the body from the site!
             console.log(response.data);
-        })
+
+
+
+
+
+          })
         .catch(function (error) {
             if (error.response) {
                 // The request was made and the server responded with a status code
@@ -45,7 +52,17 @@ if (userArguments[0] === "concert-this") {
 
 }
 if (userArguments[0] === "spotify-this-song") {
-
+    var Spotify = require('node-spotify-api');
+ 
+var spotify = new Spotify(keys.spotify);
+     
+    spotify.search({ type: 'track', query: 'All the Small Things' }, function(err, data) {
+      if (err) {
+        return console.log('Error occurred: ' + err);
+      }
+     
+    console.log(data); 
+    });
 }
 if (userArguments[0] === "movie-this") {
 
