@@ -56,13 +56,23 @@ if (userArguments[0] === "spotify-this-song") {
  
 var spotify = new Spotify(keys.spotify);
      
-    spotify.search({ type: 'track', query: 'All the Small Things' }, function(err, data) {
-      if (err) {
-        return console.log('Error occurred: ' + err);
-      }
-     
-    console.log(data); 
-    });
+spotify
+.request('https://api.spotify.com/v1/tracks/7yCPwWs66K8Ba5lFuU2bcx')
+.then(function(data) {
+  console.log(data); 
+
+  console.log('\n\n');
+  console.log('Artist: ' + data.artists[0].name);
+  console.log('Song name: ' + data.name);
+  console.log('Preview: ' + data.external_urls.spotify);
+  console.log('Album: ' + data.album.name);
+  console.log('\n\n');
+
+
+})
+.catch(function(err) {
+  console.error('Error occurred: ' + err); 
+});
 }
 if (userArguments[0] === "movie-this") {
 
