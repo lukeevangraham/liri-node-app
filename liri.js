@@ -13,6 +13,10 @@ const userArguments = process.argv.slice(2);
 
 console.log(userArguments);
 
+const searchTerm = userArguments.slice(1).join(' ');
+
+console.log(searchTerm);
+
 if (userArguments[0] === "concert-this") {
     // Grab the axios package...
     var axios = require("axios");
@@ -55,24 +59,34 @@ if (userArguments[0] === "spotify-this-song") {
     var Spotify = require('node-spotify-api');
  
 var spotify = new Spotify(keys.spotify);
-     
-spotify
-.request('https://api.spotify.com/v1/tracks/7yCPwWs66K8Ba5lFuU2bcx')
-.then(function(data) {
-  console.log(data); 
+
+// spotify.search({ type: 'track', query: 'All the Small Things' }, function(err, data) {
+spotify.search({ type: 'track', query: searchTerm }, function(err, data) {
+    if (err) {
+      return console.log('Error occurred: ' + err);
+    }
+   
+//   console.log(data.tracks.items[0].external_urls.spotify); 
 
   console.log('\n\n');
-  console.log('Artist: ' + data.artists[0].name);
-  console.log('Song name: ' + data.name);
-  console.log('Preview: ' + data.external_urls.spotify);
-  console.log('Album: ' + data.album.name);
+  console.log('Artist: ' + data.tracks.items[0].album.artists[0].name);
+  console.log('Song name: ' + data.tracks.items[0].name);
+  console.log('Preview: ' + data.tracks.items[0].external_urls.spotify);
+  console.log('Album: ' + data.tracks.items[0].album.name);
   console.log('\n\n');
+  
+     
+// spotify
+// .request('https://api.spotify.com/v1/tracks/7yCPwWs66K8Ba5lFuU2bcx')
+// .then(function(data) {
+//   console.log(data); 
+
 
 
 })
-.catch(function(err) {
-  console.error('Error occurred: ' + err); 
-});
+// .catch(function(err) {
+//   console.error('Error occurred: ' + err); 
+// });
 }
 if (userArguments[0] === "movie-this") {
 
