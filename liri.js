@@ -60,8 +60,7 @@ if (userArguments[0] === "spotify-this-song") {
     var spotify = new Spotify(keys.spotify);
     
     if (searchTerm === "") {
-        searchTerm = "The Sign";
-        console.log(searchTerm)
+        searchTerm = "The Sign Ace";
     }
 
     // spotify.search({ type: 'track', query: 'All the Small Things' }, function(err, data) {
