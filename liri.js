@@ -126,15 +126,28 @@ function searchMovies(searchTerm) {
 
 //IF USER ENETERED "do-what-it-says"
 if (userArguments[0] === "do-what-it-says") {
-    console.log("Do you really want this?\n\n")
 
     fs.readFile('random.txt', 'utf8', (err, data) => {
         if (err) throw err;
-        console.log(data);
         var fileArguments = data.split(",");
-        console.log(fileArguments);
         userArguments[0] = fileArguments[0];
-        console.log("local: " + userArguments[0]);
+        searchTerm = fileArguments[1];
+
+
+        // IF USER ENTERS "concert-this"
+        if (userArguments[0] === "concert-this") {
+            searchConcert(searchTerm)
+        }
+
+        // IF USER ENTERED "spotify-this-song"
+        if (userArguments[0] === "spotify-this-song") {
+            searchSpotify(searchTerm);
+        }
+
+        // IF USER ENTERED "movie-this"
+        if (userArguments[0] === "movie-this") {
+            searchMovies(searchTerm)
+        }
     })
 
 }
