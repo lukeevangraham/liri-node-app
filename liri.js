@@ -5,18 +5,39 @@ var keys = require("./keys.js");
 var fs = require('fs');
 
 // Take in the command line arguments
-const userArguments = process.argv.slice(2);
+var userArguments = process.argv.slice(2);
 
 var searchTerm = userArguments.slice(1).join(' ');
 
+// SEARCH SPOTIFY FUNCTION
+function searchSpotify(searchTerm) {
+    var Spotify = require('node-spotify-api');
 
-// IF USER ENTERS "concert-this"
-if (userArguments[0] === "concert-this") {
+    var spotify = new Spotify(keys.spotify);
+
+    if (searchTerm === "") {
+        searchTerm = "The Sign Ace";
+    }
+    spotify.search({ type: 'track', query: searchTerm }, function (err, data) {
+        if (err) {
+            return console.log('Error occurred: ' + err);
+        }
+        console.log('\n\n');
+        console.log('Artist: ' + data.tracks.items[0].album.artists[0].name);
+        console.log('Song name: ' + data.tracks.items[0].name);
+        console.log('Preview: ' + data.tracks.items[0].external_urls.spotify);
+        console.log('Album: ' + data.tracks.items[0].album.name);
+        console.log('\n\n');
+    })
+}
+
+//Search Concert Function
+function searchConcert(searchTerm) {
     // Grab the axios package...
     var axios = require("axios");
 
     var artist = userArguments[1];
-    console.log(artist);
+    // console.log(artist);
 
     axios
         .get("http://rest.bandsintown.com/artists/" + artist + "/events?app_id=codingbootcamp")
@@ -53,31 +74,8 @@ if (userArguments[0] === "concert-this") {
         });
 }
 
-// IF USER ENTERED "spotify-this-song"
-if (userArguments[0] === "spotify-this-song") {
-    var Spotify = require('node-spotify-api');
-    
-    var spotify = new Spotify(keys.spotify);
-    
-    if (searchTerm === "") {
-        searchTerm = "The Sign Ace";
-    }
-
-    spotify.search({ type: 'track', query: searchTerm }, function (err, data) {
-        if (err) {
-            return console.log('Error occurred: ' + err);
-        }
-        console.log('\n\n');
-        console.log('Artist: ' + data.tracks.items[0].album.artists[0].name);
-        console.log('Song name: ' + data.tracks.items[0].name);
-        console.log('Preview: ' + data.tracks.items[0].external_urls.spotify);
-        console.log('Album: ' + data.tracks.items[0].album.name);
-        console.log('\n\n');
-    })
-}
-
-// IF USER ENTERED "movie-this"
-if (userArguments[0] === "movie-this") {
+// SEARCH MOVIE FUNCTION
+function searchMovies(searchTerm) {
 
     var axios = require("axios");
 
@@ -90,7 +88,7 @@ if (userArguments[0] === "movie-this") {
         .then(function (response) {
             // If the axios was successful...
             // Then log the body from the site!
-            
+
             if (response.data.Response === "True") {
                 console.log('\n\n');
                 console.log('Title: ' + response.data.Title);
@@ -124,8 +122,6 @@ if (userArguments[0] === "movie-this") {
             }
             console.log(error.config);
         });
-
-
 }
 
 //IF USER ENETERED "do-what-it-says"
@@ -137,6 +133,28 @@ if (userArguments[0] === "do-what-it-says") {
         console.log(data);
         var fileArguments = data.split(",");
         console.log(fileArguments);
-    });
+        userArguments[0] = fileArguments[0];
+        console.log("local: " + userArguments[0]);
+    })
 
 }
+
+// IF USER ENTERS "concert-this"
+if (userArguments[0] === "concert-this") {
+    searchConcert(searchTerm)
+}
+
+
+
+// IF USER ENTERED "spotify-this-song"
+if (userArguments[0] === "spotify-this-song") {
+
+    searchSpotify(searchTerm);
+}
+
+// IF USER ENTERED "movie-this"
+if (userArguments[0] === "movie-this") {
+    searchMovies(searchTerm)
+}
+
+
