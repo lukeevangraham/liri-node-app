@@ -29,14 +29,18 @@ if (userArguments[0] === "concert-this") {
         .then(function (response) {
             // If the axios was successful...
             // Then log the body from the site!
-            console.log(response.data[0]);
+            console.log(response.data.length);
 
             console.log('\n\n');
-            console.log('Venue name: ' + response.data[0].venue.name);
-            console.log('Venue location: ' + response.data[0].venue.city + ", " + response.data[0].venue.country);
-            // console.log('Date of Event: ' + data.tracks.items[0].external_urls.spotify);
-            // console.log('Album: ' + data.tracks.items[0].album.name);
-            console.log('\n\n');
+            for (let i = 0; i < response.data.length; i++) {
+                console.log('Venue name: ' + response.data[i].venue.name);
+                console.log('Venue location: ' + response.data[i].venue.city + ", " + response.data[i].venue.region + " " + response.data[i].venue.country);
+                console.log('Date of Event: ' + moment(response.data[i].datetime).format('MM/DD/YYYY'));
+                console.log('\n');
+                
+                
+            }
+            console.log('\n');
 
 
 
