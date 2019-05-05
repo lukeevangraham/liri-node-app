@@ -1,8 +1,8 @@
 require("dotenv").config();
 
 var moment = require('moment');
-
 var keys = require("./keys.js");
+var fs = require('fs');
 
 // Take in the command line arguments
 const userArguments = process.argv.slice(2);
@@ -130,5 +130,13 @@ if (userArguments[0] === "movie-this") {
 
 //IF USER ENETERED "do-what-it-says"
 if (userArguments[0] === "do-what-it-says") {
-    console.log("Do you really want this?")
+    console.log("Do you really want this?\n\n")
+
+    fs.readFile('random.txt', 'utf8', (err, data) => {
+        if (err) throw err;
+        console.log(data);
+        var fileArguments = data.split(",");
+        console.log(fileArguments);
+    });
+
 }
