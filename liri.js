@@ -1,22 +1,16 @@
 require("dotenv").config();
 
 var moment = require('moment');
-moment().format();
 
 var keys = require("./keys.js");
-
-// Example of accessing key information
-// var spotify = new Spotify(keys.spotify);
 
 // Take in the command line arguments
 const userArguments = process.argv.slice(2);
 
-// console.log(userArguments);
+var searchTerm = userArguments.slice(1).join(' ');
 
-const searchTerm = userArguments.slice(1).join(' ');
 
-// console.log(searchTerm);
-
+// IF USER ENTERS "concert-this"
 if (userArguments[0] === "concert-this") {
     // Grab the axios package...
     var axios = require("axios");
@@ -37,15 +31,8 @@ if (userArguments[0] === "concert-this") {
                 console.log('Venue location: ' + response.data[i].venue.city + ", " + response.data[i].venue.region + " " + response.data[i].venue.country);
                 console.log('Date of Event: ' + moment(response.data[i].datetime).format('MM/DD/YYYY'));
                 console.log('\n');
-                
-                
             }
             console.log('\n');
-
-
-
-
-
         })
         .catch(function (error) {
             if (error.response) {
@@ -64,12 +51,18 @@ if (userArguments[0] === "concert-this") {
             }
             console.log(error.config);
         });
-
 }
+
+// IF USER ENTERED "spotify-this-song"
 if (userArguments[0] === "spotify-this-song") {
     var Spotify = require('node-spotify-api');
-
+    
     var spotify = new Spotify(keys.spotify);
+    
+    if (searchTerm === "") {
+        searchTerm = "The Sign";
+        console.log(searchTerm)
+    }
 
     // spotify.search({ type: 'track', query: 'All the Small Things' }, function(err, data) {
     spotify.search({ type: 'track', query: searchTerm }, function (err, data) {
@@ -89,6 +82,8 @@ if (userArguments[0] === "spotify-this-song") {
     })
 
 }
+
+// IF USER ENTERED "movie-this"
 if (userArguments[0] === "movie-this") {
 
     // var movieInput = userArguments[1];
