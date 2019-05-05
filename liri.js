@@ -63,52 +63,49 @@ if (userArguments[0] === "spotify-this-song") {
         searchTerm = "The Sign Ace";
     }
 
-    // spotify.search({ type: 'track', query: 'All the Small Things' }, function(err, data) {
     spotify.search({ type: 'track', query: searchTerm }, function (err, data) {
         if (err) {
             return console.log('Error occurred: ' + err);
         }
-
-        //   console.log(data.tracks.items[0].external_urls.spotify); 
-
         console.log('\n\n');
         console.log('Artist: ' + data.tracks.items[0].album.artists[0].name);
         console.log('Song name: ' + data.tracks.items[0].name);
         console.log('Preview: ' + data.tracks.items[0].external_urls.spotify);
         console.log('Album: ' + data.tracks.items[0].album.name);
         console.log('\n\n');
-
     })
-
 }
 
 // IF USER ENTERED "movie-this"
 if (userArguments[0] === "movie-this") {
 
-    // var movieInput = userArguments[1];
-    console.log(searchTerm);
-
     var axios = require("axios");
+
+    if (searchTerm === "") {
+        searchTerm = "Mr. Nobody";
+    }
 
     axios
         .get("http://www.omdbapi.com/?apikey=trilogy&t=" + searchTerm)
         .then(function (response) {
             // If the axios was successful...
             // Then log the body from the site!
-            console.log(response.data);
+            
+            if (response.data.Response === "True") {
+                console.log('\n\n');
+                console.log('Title: ' + response.data.Title);
+                console.log('Year Released: ' + response.data.Year);
+                console.log('IMDB Rating: ' + response.data.imdbRating + "/10");
+                console.log('Rotten Tomatoes Rating: ' + response.data.Ratings[1].Value);
+                console.log('Country: ' + response.data.Country);
+                console.log('Language: ' + response.data.Language);
+                console.log('Plot: ' + response.data.Plot);
+                console.log('Actors: ' + response.data.Actors);
+                console.log('\n\n');
 
-            console.log('\n\n');
-            console.log('Title: ' + response.data.Title);
-            console.log('Year Released: ' + response.data.Year);
-            console.log('IMDB Rating: ' + response.data.imdbRating + "/10");
-            console.log('Rotten Tomatoes Rating: ' + response.data.Ratings[1].Value);
-            console.log('Language: ' + response.data.Language);
-            console.log('Plot: ' + response.data.Plot);
-            console.log('Actors: ' + response.data.Actors);
-            console.log('\n\n');
-
-
-
+            } else {
+                console.log(response.data.Error)
+            }
         })
         .catch(function (error) {
             if (error.response) {
@@ -130,6 +127,8 @@ if (userArguments[0] === "movie-this") {
 
 
 }
-if (userArguments[0] === "do-what-it-says") {
 
+//IF USER ENETERED "do-what-it-says"
+if (userArguments[0] === "do-what-it-says") {
+    console.log("Do you really want this?")
 }
