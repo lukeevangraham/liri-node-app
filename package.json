@@ -18,7 +18,7 @@
   },
   "homepage": "https://github.com/lukeevangraham/liri-node-app#readme",
   "dependencies": {
-    "axios": "^0.18.0",
+    "axios": "^0.18.1",
     "dotenv": "^7.0.0",
     "file-system": "^2.2.2",
     "moment": "^2.24.0",
