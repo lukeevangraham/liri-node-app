@@ -118,19 +118,40 @@ function searchMovies(searchTerm) {
             // Then log the body from the site!
 
             if (response.data.Response === "True") {
-                console.log('\n\n');
-                console.log('Title: ' + response.data.Title);
-                console.log('Year Released: ' + response.data.Year);
-                console.log('IMDB Rating: ' + response.data.imdbRating + "/10");
-                console.log('Rotten Tomatoes Rating: ' + response.data.Ratings[1].Value);
-                console.log('Country: ' + response.data.Country);
-                console.log('Language: ' + response.data.Language);
-                console.log('Plot: ' + response.data.Plot);
-                console.log('Actors: ' + response.data.Actors);
-                console.log('\n\n');
+
+                let answer = `
+                
+                Title: ` + response.data.Title + `
+                Year Released: ` + response.data.Year + `
+                IMDB Rating: ` + response.data.imdbRating + "/10" + `
+                Rotten Tomatoes Rating: ` + response.data.Ratings[1].Value + `
+                Country: ` + response.data.Country + `
+                Language: ` + response.data.Language + `
+                Plot: ` + response.data.Plot + `
+                Actors: ` + response.data.Actors  + `
+                
+                `
+                
+                console.log(answer)
+                fs.appendFile("log.txt", answer, function (err) {
+                    if (err) throw err;
+                })
+                // console.log('\n\n');
+                // console.log('Title: ' + response.data.Title);
+                // console.log('Year Released: ' + response.data.Year);
+                // console.log('IMDB Rating: ' + response.data.imdbRating + "/10");
+                // console.log('Rotten Tomatoes Rating: ' + response.data.Ratings[1].Value);
+                // console.log('Country: ' + response.data.Country);
+                // console.log('Language: ' + response.data.Language);
+                // console.log('Plot: ' + response.data.Plot);
+                // console.log('Actors: ' + response.data.Actors);
+                // console.log('\n\n');
 
             } else {
                 console.log(response.data.Error)
+                fs.appendFile("log.txt", response.data.Error, function (err) {
+                    if (err) throw err;
+                })
             }
         })
         .catch(function (error) {
