@@ -9,6 +9,10 @@ var userArguments = process.argv.slice(2);
 
 var searchTerm = userArguments.slice(1).join(' ');
 
+fs.appendFile("log.txt", userArguments, function (err) {
+    if (err) throw err;
+})
+
 // SEARCH SPOTIFY FUNCTION
 function searchSpotify(searchTerm) {
     var Spotify = require('node-spotify-api');
@@ -22,12 +26,25 @@ function searchSpotify(searchTerm) {
         if (err) {
             return console.log('Error occurred: ' + err);
         }
-        console.log('\n\n');
-        console.log('Artist: ' + data.tracks.items[0].album.artists[0].name);
-        console.log('Song name: ' + data.tracks.items[0].name);
-        console.log('Preview: ' + data.tracks.items[0].external_urls.spotify);
-        console.log('Album: ' + data.tracks.items[0].album.name);
-        console.log('\n\n');
+        let answer = `
+        
+        Artist: ` + data.tracks.items[0].album.artists[0].name + `
+        Song name: ` + data.tracks.items[0].name + `
+        Preview: ` + data.tracks.items[0].external_urls.spotify + `
+        Album: ` + data.tracks.items[0].album.name + `
+        
+        `;
+
+        console.log(answer)
+        fs.appendFile('log.txt', answer, function(err) {
+            if (err) throw err;
+        });
+        // console.log('\n\n');
+        // console.log('Artist: ' + data.tracks.items[0].album.artists[0].name);
+        // console.log('Song name: ' + data.tracks.items[0].name);
+        // console.log('Preview: ' + data.tracks.items[0].external_urls.spotify);
+        // console.log('Album: ' + data.tracks.items[0].album.name);
+        // console.log('\n\n');
     })
 }
 
@@ -44,16 +61,27 @@ function searchConcert(searchTerm) {
         .then(function (response) {
             // If the axios was successful...
             // Then log the body from the site!
-            console.log(response.data.length);
+            // console.log(response.data.length);
 
-            console.log('\n\n');
+            // console.log('\n\n');
             for (let i = 0; i < response.data.length; i++) {
-                console.log('Venue name: ' + response.data[i].venue.name);
-                console.log('Venue location: ' + response.data[i].venue.city + ", " + response.data[i].venue.region + " " + response.data[i].venue.country);
-                console.log('Date of Event: ' + moment(response.data[i].datetime).format('MM/DD/YYYY'));
-                console.log('\n');
+
+                let answer = `
+                Venue name: ` + response.data[i].venue.name + `
+                Venue location: ` + response.data[i].venue.city + ", " + response.data[i].venue.region + " " + response.data[i].venue.country + `
+                Date of Event: ` + moment(response.data[i].datetime).format('MM/DD/YYYY') + `
+                `
+
+                console.log(answer)
+                fs.appendFile('log.txt', answer, function(err) {
+                    if (err) throw err;
+                });
+                // console.log('Venue name: ' + response.data[i].venue.name);
+                // console.log('Venue location: ' + response.data[i].venue.city + ", " + response.data[i].venue.region + " " + response.data[i].venue.country);
+                // console.log('Date of Event: ' + moment(response.data[i].datetime).format('MM/DD/YYYY'));
+                // console.log('\n');
             }
-            console.log('\n');
+            // console.log('\n');
         })
         .catch(function (error) {
             if (error.response) {

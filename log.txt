@@ -1,0 +1,124 @@
+
+        
+        Artist: Earth, Wind & Fire
+        Song name: September
+        Preview: https://open.spotify.com/track/7Cuk8jsPPoNYQWXK9XRFvG
+        Album: September
+        
+        
+                Venue name: Hillsong Worship Awake Tour
+                Venue location: Sugar Land, TX United States
+                Date of Event: 05/01/2020
+                
+                Venue name: Hillsong Worship Awake Tour
+                Venue location: Baton Rouge, LA United States
+                Date of Event: 05/02/2020
+                
+                Venue name: BJCC Concert Hall
+                Venue location: Birmingham, AL United States
+                Date of Event: 05/04/2020
+                
+                Venue name: Knoxville Civic Auditorium and Coliseum
+                Venue location: Knoxville, TN United States
+                Date of Event: 05/05/2020
+                
+                Venue name: Durham Performing Arts Center
+                Venue location: Durham, NC United States
+                Date of Event: 05/07/2020
+                
+                Venue name: UMBC Event Center
+                Venue location: Baltimore, MD United States
+                Date of Event: 05/08/2020
+                
+                Venue name: Santander Arena
+                Venue location: Reading, PA United States
+                Date of Event: 05/09/2020
+                
+                Venue name: Kings Theatre
+                Venue location: Brooklyn, NY United States
+                Date of Event: 05/11/2020
+                
+                Venue name: Fox Theatre Detroit
+                Venue location: Detroit, MI United States
+                Date of Event: 05/13/2020
+                
+                Venue name: Peoria Civic Center
+                Venue location: Peoria, IL United States
+                Date of Event: 05/14/2020
+                
+                Venue name: Silverstein Eye Centers Arena
+                Venue location: Independence, MO United States
+                Date of Event: 05/15/2020
+                
+                Venue name: The Armory
+                Venue location: Minneapolis, MN United States
+                Date of Event: 05/16/2020
+                
+                Venue name: Denny Sanford Premier Center
+                Venue location: Sioux Falls, SD United States
+                Date of Event: 06/08/2020
+                
+                Venue name: Maverik Center
+                Venue location: West Valley City, UT United States
+                Date of Event: 06/11/2020
+                
+                Venue name: ExtraMile Arena
+                Venue location: Boise, ID United States
+                Date of Event: 06/12/2020
+                
+                Venue name: Toyota Center
+                Venue location: Kennewick, WA United States
+                Date of Event: 06/13/2020
+                
+                Venue name: Keller Auditorium
+                Venue location: Portland, OR United States
+                Date of Event: 06/15/2020
+                
+                Venue name: WaMu Theater
+                Venue location: Seattle, WA United States
+                Date of Event: 06/16/2020
+                
+                Venue name: Redding Civic Auditorium
+                Venue location: Redding, CA United States
+                Date of Event: 06/18/2020
+                
+                Venue name: Event Center at San José State University
+                Venue location: San Jose, CA United States
+                Date of Event: 06/20/2020
+                
+                Venue name: Mechanics Bank Arena
+                Venue location: Bakersfield, CA United States
+                Date of Event: 06/22/2020
+                
+                Venue name: The Forum
+                Venue location: Los Angeles, CA United States
+                Date of Event: 06/26/2020
+                
+        
+        Artist: Prince
+        Song name: Purple Rain
+        Preview: https://open.spotify.com/track/54X78diSLoUDI3joC2bjMz
+        Album: Purple Rain
+        
+        
+        
+        Artist: Prince
+        Song name: Purple Rain
+        Preview: https://open.spotify.com/track/54X78diSLoUDI3joC2bjMz
+        Album: Purple Rain
+        
+        
+        
+        Artist: Prince
+        Song name: Purple Rain
+        Preview: https://open.spotify.com/track/54X78diSLoUDI3joC2bjMz
+        Album: Purple Rain
+        
+        spotify-this-song,Purple,Rain
+        
+        Artist: Prince
+        Song name: Purple Rain
+        Preview: https://open.spotify.com/track/54X78diSLoUDI3joC2bjMz
+        Album: Purple Rain
+        
+        
